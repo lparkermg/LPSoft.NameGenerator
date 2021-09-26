@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace LPSoft.NameGenerator.Tests
             var filepath = "./test.json";
 
             var builder = new NameGeneratorBuilder();
-            Assert.That(async () => await builder.FromJsonFile(filepath), Throws.TypeOf<FileNotFoundException>());
+            Assert.That(() => builder.FromJsonFile(filepath), Throws.TypeOf<FileNotFoundException>());
         }
 
         [Test]
@@ -57,7 +58,7 @@ namespace LPSoft.NameGenerator.Tests
             }
 
             var builder = new NameGeneratorBuilder();
-            var result = await builder.FromJsonFile(filepath);
+            var result = builder.FromJsonFile(filepath);
 
             Assert.That(result, Is.TypeOf<NameGeneratorBuilder>());
 
@@ -76,9 +77,9 @@ namespace LPSoft.NameGenerator.Tests
             }
 
             var builder = new NameGeneratorBuilder();
-            var result = await builder.FromJsonFile(filepath);
+            var result = builder.FromJsonFile(filepath);
 
-            Assert.That(() => builder.FromJsonFile(filepath), Throws.ArgumentException);
+            Assert.That(() => result.FromJsonFile(filepath), Throws.ArgumentException);
 
             File.Delete(filepath);
         }
@@ -105,7 +106,34 @@ namespace LPSoft.NameGenerator.Tests
             }
 
             var builder = new NameGeneratorBuilder();
-            var result = (await builder.FromJsonFile(filepath)).Build();
+            var result = builder.FromJsonFile(filepath).Build();
+
+            Assert.That(result.AvailableData, Is.Not.Empty);
+        }
+
+        [Test]
+        public void FromDictionary_GivenNullDictionary_ThrowsArgumentException()
+        {
+            var builder = new NameGeneratorBuilder();
+            Assert.That(() => builder.FromDictionary(null), Throws.ArgumentException.With.Message.EqualTo("Dictionary cannot be null."));
+        }
+
+        [Test]
+        public void FromDictionary_GivenEmptyDictionary_ReturnsNameGeneratorBuilder()
+        {
+            var builder = new NameGeneratorBuilder();
+            var result = builder.FromDictionary(new Dictionary<string, string[]>());
+
+            Assert.That(result, Is.TypeOf<NameGeneratorBuilder>());
+        }
+
+        [Test]
+        public void Build_GivenFromDictionary_ReturnsNameGeneratorWithData()
+        {
+            var data = new Dictionary<string, string[]>();
+            data.Add("test", new[] { "Test 1", "test 2", "test 3" });
+            var builder = new NameGeneratorBuilder();
+            var result = builder.FromDictionary(data).Build();
 
             Assert.That(result.AvailableData, Is.Not.Empty);
         }

@@ -22,7 +22,7 @@ namespace LPSoft.NameGenerator
         /// </summary>
         /// <param name="path">The path of the json file.</param>
         /// <returns>The <see cref="NameGeneratorBuilder"/> itself.</returns>
-        public async Task<NameGeneratorBuilder> FromJsonFile(string path)
+        public NameGeneratorBuilder FromJsonFile(string path)
         {
             if (string.IsNullOrWhiteSpace(path) || !path.EndsWith(".json"))
             {
@@ -31,11 +31,31 @@ namespace LPSoft.NameGenerator
 
             using (var reader = File.OpenText(path))
             {
-                var dataToAdd = JsonSerializer.Deserialize<IDictionary<string, string[]>>(await reader.ReadToEndAsync());
+                var dataToAdd = JsonSerializer.Deserialize<IDictionary<string, string[]>>(reader.ReadToEnd());
                 foreach (var key in dataToAdd.Keys)
                 {
                     _currentData.Add(key, dataToAdd[key]);
                 }
+            }
+
+            return this;
+        }
+
+        /// <summary>
+        /// Provides names from a dictionary.
+        /// </summary>
+        /// <param name="data">The provided data.</param>
+        /// <returns>The <see cref="NameGeneratorBuilder"/> itself.</returns>
+        public NameGeneratorBuilder FromDictionary(IDictionary<string, string[]> data)
+        {
+            if (data == null)
+            {
+                throw new ArgumentException("Dictionary cannot be null.");
+            }
+
+            foreach (var key in data.Keys)
+            {
+                _currentData.Add(key, data[key]);
             }
 
             return this;
