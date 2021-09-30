@@ -8,7 +8,6 @@ namespace LPSoft.NameGenerator
     using System.Collections.Generic;
     using System.IO;
     using System.Text.Json;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Builder for the <see cref="NameGenerator"/>.
@@ -65,6 +64,6 @@ namespace LPSoft.NameGenerator
         /// Builds a new <see cref="NameGenerator"/>.
         /// </summary>
         /// <returns>A new <see cref="NameGenerator"/>.</returns>
-        public NameGenerator Build() => new NameGenerator(_currentData);
+        public NameGenerator Build() => new NameGenerator((IReadOnlyDictionary<string, string[]>)_currentData);
     }
 }
