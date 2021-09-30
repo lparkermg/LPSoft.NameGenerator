@@ -4,6 +4,16 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>LPSoft.NameGenerator</AssemblyName>
     <RootNamespace>LPSoft.NameGenerator</RootNamespace>
+    <Description>Builds and generates random strings, from a dictionary or json file.</Description>
+    <Copyright>Copyright by Luke Parker (2021)</Copyright>
+    <PackageProjectUrl>https://github.com/lparkermg/LPSoft.NameGenerator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lparkermg/LPSoft.NameGenerator</RepositoryUrl>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Company>Luke Parker</Company>
+    <Authors>Luke Parker</Authors>
+    <Product>NameGenerator</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,6 +34,13 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="System.Text.Json" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
