@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameGenerator", "NameGenerator.csproj", "{6BDD5F2C-104A-4C3F-8D18-C2367B3D3313}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameGenerator", ".\NameGenerator\NameGenerator.csproj", "{6BDD5F2C-104A-4C3F-8D18-C2367B3D3313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameGenerator.Tests", "..\NameGenerator.Tests\NameGenerator.Tests.csproj", "{F6E18353-7E43-45BC-9D89-2110E1811153}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NameGenerator.Tests", ".\NameGenerator.Tests\NameGenerator.Tests.csproj", "{F6E18353-7E43-45BC-9D89-2110E1811153}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
