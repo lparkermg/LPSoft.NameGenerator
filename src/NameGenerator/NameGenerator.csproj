@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>LPSoft.NameGenerator</AssemblyName>
+    <RootNamespace>LPSoft.NameGenerator</RootNamespace>
+    <Description>Builds and generates random strings, from a dictionary or json file.</Description>
+    <Copyright>Copyright by Luke Parker (2021)</Copyright>
+    <PackageProjectUrl>https://github.com/lparkermg/LPSoft.NameGenerator</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/lparkermg/LPSoft.NameGenerator</RepositoryUrl>
+    <PackageReleaseNotes>Initial Release</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Company>Luke Parker</Company>
+    <Authors>Luke Parker</Authors>
+    <Product>NameGenerator</Product>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>Generator, Name, Luke, Parker</PackageTags>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>.\bin\Debug\netstandard2.0\LPSoft.NameGenerator.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+    <DocumentationFile>.\bin\Release\netstandard2.0\LPSoft.NameGenerator.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LPSoft.CSharp.Codestyles" Version="0.0.1-alpha">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Text.Json" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
